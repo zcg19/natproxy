@@ -1,4 +1,4 @@
-tcp reverse proxy
+a simply tcp reverse proxy
 
 1 client+server 
 2 逻辑比较简单，就是一个反向代理。初衷是为了调试nat环境下的vs，参考lua脚本 

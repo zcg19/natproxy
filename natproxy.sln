@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "natproxy", "natproxy\natproxy.vcproj", "{32FE5530-E723-48E2-8338-36446AA4238D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xdsrv", "xdsrv\xdsrv.vcproj", "{2883A36D-4D31-43CB-9CC9-CBE0E49CF2A0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua", "lua\lua.vcproj", "{B6400F9D-F602-4E9A-A5DA-0B32216E999E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xdserver", "xdserver\xdserver.vcproj", "{C67AB1C3-4FCE-4869-98A4-69CF12618384}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32FE5530-E723-48E2-8338-36446AA4238D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{32FE5530-E723-48E2-8338-36446AA4238D}.Debug|Win32.Build.0 = Debug|Win32
+		{32FE5530-E723-48E2-8338-36446AA4238D}.Release|Win32.ActiveCfg = Release|Win32
+		{32FE5530-E723-48E2-8338-36446AA4238D}.Release|Win32.Build.0 = Release|Win32
+		{2883A36D-4D31-43CB-9CC9-CBE0E49CF2A0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2883A36D-4D31-43CB-9CC9-CBE0E49CF2A0}.Debug|Win32.Build.0 = Debug|Win32
+		{2883A36D-4D31-43CB-9CC9-CBE0E49CF2A0}.Release|Win32.ActiveCfg = Release|Win32
+		{2883A36D-4D31-43CB-9CC9-CBE0E49CF2A0}.Release|Win32.Build.0 = Release|Win32
+		{B6400F9D-F602-4E9A-A5DA-0B32216E999E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B6400F9D-F602-4E9A-A5DA-0B32216E999E}.Debug|Win32.Build.0 = Debug|Win32
+		{B6400F9D-F602-4E9A-A5DA-0B32216E999E}.Release|Win32.ActiveCfg = Release|Win32
+		{B6400F9D-F602-4E9A-A5DA-0B32216E999E}.Release|Win32.Build.0 = Release|Win32
+		{C67AB1C3-4FCE-4869-98A4-69CF12618384}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C67AB1C3-4FCE-4869-98A4-69CF12618384}.Debug|Win32.Build.0 = Debug|Win32
+		{C67AB1C3-4FCE-4869-98A4-69CF12618384}.Release|Win32.ActiveCfg = Release|Win32
+		{C67AB1C3-4FCE-4869-98A4-69CF12618384}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
