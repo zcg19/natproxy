@@ -11,6 +11,7 @@
 #define LOCAL_ADDRESS_IPV4              0x0100007f
 #define DEFAULT_RECV_BUFFER_SIZE		1024 * 64
 #define DEFAULT_SEND_BUFFER_SIZE		1024 * 64
+#define DEFAULT_CONNECT_DEADED_TIMEOUT  1000*60*60
 #define FIRST_HANDLESHAKE0              'xdch'
 
 
@@ -77,6 +78,7 @@ inline BOOL IsValidXdMsgSize(XdMsgHeader_t * pMsg)
 enum enumXdTaskId
 {
 	XdTask_Talk = 0x1000, 
+	XdTask_Ping, 
 	XdTask_Result, 
 
 	// ---- file
