@@ -1,5 +1,5 @@
 #include "proxym.h"
-#include "net/clt/ipaddress.h"
+#include "common/ipaddress.h"
 
 
 static void ResolveIpv4Address(char * szDomain)
@@ -152,7 +152,7 @@ void CNatProxyManager::DumpInfo()
 	char szTmp[256] = {0};
 	m_xdc.DumpCinfo(szTmp, sizeof(szTmp));
 
-	printf(">> proxym info, -----------xdc: %s, proxy: %d\n", szTmp, m_lstProxy.size());
+	printf(">> proxym info, -----------\n   xdc: %s, proxy: %d\n", szTmp, m_lstProxy.size());
 	CGenericLockHandler h(m_lock);
 	for(NatProxyMultList_t::iterator it1 = m_lstProxy.begin(); it1 != m_lstProxy.end(); it1++)
 	{
@@ -349,10 +349,17 @@ int  CNatProxyManager::HandleXdcMsg(XdMsgHeader_t * pMsg)
 	// 3 再处理 TASK消息. 
 	switch(pMsg->nMsgId)
 	{
+	case XdTask_Ping:
+		{
+			ClientId_t idt = pMsg->nCidSrc; 
+			pMsg->nCidSrc  = pMsg->nCidDst; pMsg->nCidDst = idt; pMsg->nMsgId = XdTask_Talk;
+			nRet = XdcSendMsg2(pMsg);
+		}
+
 	case XdTask_Talk:
 		{
 			const char * str = (const char *)(pMsg+1);
-			XdLog(">> manager msg, cid(%I64d) say -->%s\n", pMsg->nCidSrc, str);
+			XdLog(">> manager msg, cid(%I64d) say -->%s\n", pMsg->nMsgId!=XdTask_Ping ? pMsg->nCidSrc:pMsg->nCidDst, str);
 		}
 		break;
 	case XdTask_AssertProxyServer:
@@ -374,7 +381,7 @@ int  CNatProxyManager::HandleXdcMsg(XdMsgHeader_t * pMsg)
 			{
 				proxys->nIndex = i; Assert(proxys->nListenPort[i]);
 				nRet = CreateNatProxyServerImpl(pMsg->nCidSrc, proxys);
-				XdLog(">> manager msg, create proxy server(%d) --->%I64d,%08x:%d\n", nRet, pMsg->nCidSrc, proxys->nListenIp[i], proxys->nListenPort[i]);
+				XdLog(">> manager msg, create proxy server(%d) --->%I64d,%08x:%d:%d\n", nRet, pMsg->nCidSrc, proxys->nListenIp[i], proxys->nListenPort[i], proxys->nListenProxyPort[i]);
 			}
 		}
 		break;
@@ -526,7 +533,7 @@ int  CNatProxyManager::HandleXdcMsg(XdMsgHeader_t * pMsg)
 		break;
 
 	default:
-		Assert(0);
+		XdLog(">> manager msg, unkown cmd!!! -->%d(%d)\n", pMsg->nMsgId, pMsg->nSize);
 		break;
 	}
 
