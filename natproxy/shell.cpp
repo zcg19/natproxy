@@ -284,7 +284,6 @@ void   Script_OnRecvXdcMsg(void * s, void * szData, int nLen)
 	case XdTask_PullFile:
 		break;
 	default:
-		Assert(0);
 		break;
 	}
 }
@@ -318,7 +317,6 @@ void   Script_OnSendXdcMsg(void * s, void * szData, int nLen)
 	case XdTask_PullFile:
 		break;
 	default:
-		Assert(0);
 		break;
 	}
 }

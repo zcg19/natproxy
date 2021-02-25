@@ -66,7 +66,7 @@ int  ProxyManagerMain()
 		case 'T':
 			XdLog(">> input format= 'cid' ---> ");
 			scanf("%I64d", &nCid); fflush(stdin);
-			nRet = proxym.TalkToPeer(nCid, "hello!!!");
+			nRet = proxym.TalkToPeer(nCid, "hello!!!", ch == 't');
 			if(ch == 't') break;
 			while(1)
 			{

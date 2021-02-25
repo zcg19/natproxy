@@ -55,11 +55,11 @@ public:
 		return XdcSendMsg2(XDMSG());
 	}
 
-	int  TalkToPeer(ClientId_t xid, const char * szAword)
+	int  TalkToPeer(ClientId_t xid, const char * szAword, bool bIsPing = false)
 	{
 		int  nLen = 0;
 		char szBuf[1024] = {0};
-		ATTACH_XDMSG_EXDATA(szBuf, char, XdTask_Talk, xid);
+		ATTACH_XDMSG_EXDATA(szBuf, char, bIsPing ? XdTask_Ping:XdTask_Talk, xid);
 
 		if(szAword)  nLen = strlen(szAword)+1;
 		if(!szAword) return 0;
